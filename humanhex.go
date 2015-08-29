@@ -1,3 +1,6 @@
+// Package humanhex is a utility library for dumping binary to a human-consumable
+// string. It accounts for the fact that many binary blobs happen to contain bytes
+// that, while valid ASCII, aren't actually part of a string.
 package humanhex
 
 import (
