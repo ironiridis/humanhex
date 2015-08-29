@@ -9,6 +9,7 @@ type testcase struct {
 }
 
 func z(t *testing.T, in []testcase) {
+	t.Parallel()
 	for _, tc := range in {
 		got := String(tc.try, tc.contig)
 		if got != tc.want {
@@ -93,11 +94,12 @@ func TestEmpty(t *testing.T) {
 }
 
 func TestInvalidM(t *testing.T) {
+	t.Parallel()
 	defer func() {
 		if r := recover(); r != nil {
 			return
 		}
 	}()
-	String([]byte{0, 0, 0, 0}, 0)
+	String([]byte{}, 0)
 	t.Error("String({}, 0) failed to panic")
 }
