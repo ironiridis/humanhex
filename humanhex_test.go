@@ -28,6 +28,18 @@ func TestAllNulls(t *testing.T) {
 	})
 }
 
+// for coverage
+func TestAllFFs(t *testing.T) {
+	z(t, []testcase{
+		{[]byte{0xff, 0xff, 0xff, 0xff}, 1, "\\xff\\xff\\xff\\xff"},
+		{[]byte{0xff, 0xff, 0xff, 0xff, 0xff}, 1, "\\xff\\xff\\xff\\xff\\xff"},
+		{[]byte{0xff, 0xff, 0xff, 0xff}, 2, "\\xff\\xff\\xff\\xff"},
+		{[]byte{0xff, 0xff, 0xff, 0xff, 0xff}, 2, "\\xff\\xff\\xff\\xff\\xff"},
+		{[]byte{0xff, 0xff, 0xff, 0xff}, 10, "\\xff\\xff\\xff\\xff"},
+		{[]byte{0xff, 0xff, 0xff, 0xff, 0xff}, 10, "\\xff\\xff\\xff\\xff\\xff"},
+	})
+}
+
 func TestStartReadable(t *testing.T) {
 	z(t, []testcase{
 		{[]byte{0x34, 0x34, 0, 0, 0, 0}, 1, "44\\x00\\x00\\x00\\x00"},
